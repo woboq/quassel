@@ -51,6 +51,7 @@ class Identity : public SyncableObject
     Q_PROPERTY(QString detachAwayReason READ detachAwayReason WRITE setDetachAwayReason)
     Q_PROPERTY(bool detachAwayReasonEnabled READ detachAwayReasonEnabled WRITE setDetachAwayReasonEnabled)
     Q_PROPERTY(QString ident READ ident WRITE setIdent)
+    Q_PROPERTY(QString dbUserName READ dbUserName WRITE setDbUserName)
     Q_PROPERTY(QString kickReason READ kickReason WRITE setKickReason)
     Q_PROPERTY(QString partReason READ partReason WRITE setPartReason)
     Q_PROPERTY(QString quitReason READ quitReason WRITE setQuitReason)
@@ -83,6 +84,7 @@ public :
     inline const QString &detachAwayReason() const { return _detachAwayReason; }
     inline bool detachAwayReasonEnabled() const { return _detachAwayReasonEnabled; }
     inline const QString &ident() const { return _ident; }
+    inline const QString &dbUserName() const { return _dbUserName; }
     inline const QString &kickReason() const { return _kickReason; }
     inline const QString &partReason() const { return _partReason; }
     inline const QString &quitReason() const { return _quitReason; }
@@ -104,6 +106,7 @@ public slots:
     void setDetachAwayReason(const QString &reason);
     void setDetachAwayReasonEnabled(bool enabled);
     void setIdent(const QString &ident);
+    void setDbUserName(const QString &dbUN);
     void setKickReason(const QString &reason);
     void setPartReason(const QString &reason);
     void setQuitReason(const QString &reason);
@@ -146,7 +149,7 @@ private:
     bool _detachAwayEnabled;
     QString _detachAwayReason;
     bool _detachAwayReasonEnabled;
-    QString _ident, _kickReason, _partReason, _quitReason;
+    QString _ident, _dbUserName, _kickReason, _partReason, _quitReason;
 
     void init();
     QString defaultNick();

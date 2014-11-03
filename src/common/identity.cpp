@@ -70,6 +70,7 @@ Identity::Identity(const Identity &other, QObject *parent)
     _detachAwayReason(other.detachAwayReason()),
     _detachAwayReasonEnabled(other.detachAwayReasonEnabled()),
     _ident(other.ident()),
+    _dbUserName(other.dbUserName()),
     _kickReason(other.kickReason()),
     _partReason(other.partReason()),
     _quitReason(other.quitReason())
@@ -311,6 +312,14 @@ void Identity::setIdent(const QString &ident)
     _ident = ident;
     SYNC(ARG(ident))
 }
+
+void Identity::setDbUserName(const QString &dbUN)
+{
+    _dbUserName = dbUN;
+    SYNC(ARG(_dbUserName))
+}
+
+
 
 
 void Identity::setKickReason(const QString &reason)

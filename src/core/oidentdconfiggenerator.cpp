@@ -69,7 +69,7 @@ bool OidentdConfigGenerator::init()
 bool OidentdConfigGenerator::addSocket(const CoreIdentity *identity, const QHostAddress &localAddress, quint16 localPort, const QHostAddress &peerAddress, quint16 peerPort)
 {
     Q_UNUSED(localAddress) Q_UNUSED(peerAddress) Q_UNUSED(peerPort)
-    QString ident = identity->ident();
+    QString ident = identity->dbUserName();
 
     _quasselConfig.append(_quasselStanzaTemplate.arg(localPort).arg(ident).arg(_configTag).toLatin1());
 

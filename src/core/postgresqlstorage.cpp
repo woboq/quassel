@@ -555,6 +555,15 @@ QList<CoreIdentity> PostgreSqlStorage::identities(UserId user)
         return identities;
     }
 
+    QString dbUserName;
+    QSqlQuery userNameQuery(db);
+    userNameQuery.prepare("SELECT username FROM quasseluser WHERE userid=:userid");
+    userNameQuery.bindValue(":userid", user.toInt());
+    safeExec(userNameQuery);
+    while(userNameQuery.next()) {
+        dbUserName = userNameQuery.value(0).toString();
+    }
+
     QSqlQuery query(db);
     query.prepare(queryString("select_identities"));
     query.bindValue(":userid", user.toInt());
@@ -581,6 +590,7 @@ QList<CoreIdentity> PostgreSqlStorage::identities(UserId user)
         identity.setDetachAwayReason(query.value(12).toString());
         identity.setDetachAwayReasonEnabled(!!query.value(13).toInt());
         identity.setIdent(query.value(14).toString());
+        identity.setDbUserName(dbUserName);
         identity.setKickReason(query.value(15).toString());
         identity.setPartReason(query.value(16).toString());
         identity.setQuitReason(query.value(17).toString());

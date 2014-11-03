@@ -485,7 +485,7 @@ void CoreNetwork::socketInitialized()
         nick = identity->nicks()[0];
     }
     putRawLine(serverEncode(QString("NICK :%1").arg(nick)));
-    putRawLine(serverEncode(QString("USER %1 8 * :%2").arg(identity->ident(), identity->realName())));
+    putRawLine(serverEncode(QString("USER %1 8 * :%2").arg(identity->dbUserName(), identity->realName())));
 }
 
 
